@@ -54,7 +54,6 @@
       text-align: center;
       padding: 15px;
       border: 1px solid #ccc;
-      cursor: pointer;
     }
 
     .item img {
@@ -123,13 +122,6 @@
     .order-form button:hover {
       background-color: #3b261d;
     }
-
-    .total {
-      margin-top: 20px;
-      font-size: 18px;
-      font-weight: bold;
-      text-align: center;
-    }
   </style>
 </head>
 <body>
@@ -143,25 +135,25 @@
 
   <!-- Menu Section -->
   <div class="menu">
-    <div class="item" data-name="Hot Americano" data-price="120">
+    <div class="item">
       <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?fit=crop&w=500&q=80" alt="Hot Americano">
       <h3>Hot Americano</h3>
       <p>Rs. 120</p>
     </div>
 
-    <div class="item" data-name="Hot Coffee" data-price="150">
+    <div class="item">
       <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?fit=crop&w=500&q=80" alt="Hot Coffee">
       <h3>Hot Coffee</h3>
       <p>Rs. 150</p>
     </div>
 
-    <div class="item" data-name="Iced Latte" data-price="200">
+    <div class="item">
       <img src="https://images.unsplash.com/photo-1605470301974-6a04310e2735?fit=crop&w=500&q=80" alt="Iced Latte">
       <h3>Iced Latte</h3>
       <p>Rs. 200</p>
     </div>
 
-    <div class="item" data-name="Cold Coffee with Ice Cream" data-price="250">
+    <div class="item">
       <img src="https://images.unsplash.com/photo-1587248728531-9be0d92e89f9?fit=crop&w=500&q=80" alt="Cold Coffee with Ice Cream">
       <h3>Cold Coffee with Ice Cream</h3>
       <p>Rs. 250</p>
@@ -171,7 +163,7 @@
   <!-- Order Form Section -->
   <div class="order-form">
     <h2>Place Your Order</h2>
-    <form id="order-form" action="https://formsubmit.co/your-email@example.com" method="POST">
+    <form action="https://formsubmit.co/your-email@example.com" method="POST">
       <label for="name">Your Name:</label>
       <input type="text" name="name" required>
 
@@ -182,45 +174,30 @@
       <textarea name="address" rows="3" required></textarea>
 
       <label for="order">What would you like to order?</label>
-      <textarea name="order" rows="3" placeholder="E.g., 1 Hot Coffee, 1 Cold Coffee with Ice Cream" required></textarea>
-
-      <div class="total">
-        Total: Rs. <span id="total-price">0</span>
+      <div>
+        <label>
+          <input type="checkbox" name="order" value="Hot Americano"> Hot Americano (Rs. 120)
+        </label>
+      </div>
+      <div>
+        <label>
+          <input type="checkbox" name="order" value="Hot Coffee"> Hot Coffee (Rs. 150)
+        </label>
+      </div>
+      <div>
+        <label>
+          <input type="checkbox" name="order" value="Iced Latte"> Iced Latte (Rs. 200)
+        </label>
+      </div>
+      <div>
+        <label>
+          <input type="checkbox" name="order" value="Cold Coffee with Ice Cream"> Cold Coffee with Ice Cream (Rs. 250)
+        </label>
       </div>
 
       <button type="submit">Submit Order</button>
     </form>
   </div>
-
-  <script>
-    let orderDetails = [];
-    let totalPrice = 0;
-
-    // Add coffee item to the order
-    document.querySelectorAll('.item').forEach(item => {
-      item.addEventListener('click', function() {
-        const coffeeName = item.getAttribute('data-name');
-        const coffeePrice = parseInt(item.getAttribute('data-price'));
-        
-        // Add item to order
-        orderDetails.push({ name: coffeeName, price: coffeePrice });
-        totalPrice += coffeePrice;
-        
-        // Update total price
-        document.getElementById('total-price').textContent = totalPrice;
-        
-        // Update the order textarea
-        const orderText = document.querySelector('textarea[name="order"]');
-        orderText.value = orderDetails.map(item => `${item.name} - Rs. ${item.price}`).join(', ');
-      });
-    });
-
-    // Redirect to thank you page after form submission
-    document.getElementById('order-form').addEventListener('submit', function(event) {
-      event.preventDefault(); // Prevent form submission for now
-      window.location.href = 'thank-you.html'; // Redirect to the Thank You page
-    });
-  </script>
 
 </body>
 </html>
