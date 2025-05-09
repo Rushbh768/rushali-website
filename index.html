@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Rushali Bhattarai</title>
+  <title>BrewUp – Coffee Delivery</title>
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XTYM131HY8"></script>
@@ -10,17 +10,101 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-XTYM131HY8');
   </script>
 
   <style>
-    body { font-family: Arial, sans-serif; padding: 40px; background: #f4f4f4; }
-    h1 { color: #333; }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f5f2;
+      padding: 20px;
+      color: #3b2e2a;
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .logo img {
+      max-width: 300px;
+      width: 100%;
+      height: auto;
+    }
+
+    h1 {
+      color: #6B4226;
+      text-align: center;
+    }
+
+    .menu {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .item {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      overflow: hidden;
+      text-align: center;
+      padding: 15px;
+    }
+
+    .item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+
+    .item h3 {
+      margin: 10px 0 5px;
+      font-size: 18px;
+    }
+
+    .item p {
+      font-size: 16px;
+      color: #4e3c37;
+    }
   </style>
 </head>
 <body>
-  <h1>Hello, I'm Rushali!</h1>
-  <p>This is my personal website. More content coming soon.</p>
+
+  <!-- Logo section -->
+  <div class="logo">
+    <img src="brewup-logo.png" alt="BrewUp Logo">
+  </div>
+
+  <p style="text-align:center;">Delicious coffee delivered to your doorstep.</p>
+
+  <div class="menu">
+    <div class="item">
+      <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?fit=crop&w=500&q=80" alt="Hot Americano">
+      <h3>Hot Americano</h3>
+      <p>Rs. 120</p>
+    </div>
+
+    <div class="item">
+      <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?fit=crop&w=500&q=80" alt="Hot Coffee">
+      <h3>Hot Coffee</h3>
+      <p>Rs. 150</p>
+    </div>
+
+    <div class="item">
+      <img src="https://images.unsplash.com/photo-1605470301974-6a04310e2735?fit=crop&w=500&q=80" alt="Iced Latte">
+      <h3>Iced Latte</h3>
+      <p>Rs. 200</p>
+    </div>
+
+    <div class="item">
+      <img src="https://images.unsplash.com/photo-1587248728531-9be0d92e89f9?fit=crop&w=500&q=80" alt="Cold Coffee with Ice Cream">
+      <h3>Cold Coffee with Ice Cream</h3>
+      <p>Rs. 250</p>
+    </div>
+  </div>
+
 </body>
-</html>>
+</html>
