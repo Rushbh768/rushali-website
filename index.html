@@ -16,12 +16,14 @@
   <style>
     body {
       font-family: 'Arial', sans-serif;
-      background-color: #0F2B23;
+      background-color: #9C2A2D; /* Nepalese flag red */
       color: #f0f0f0;
       padding: 20px;
+      background-image: url('nepalese-background.png'); /* Optional: Nepalese themed background */
+      background-size: cover;
+      background-position: center;
     }
 
-    /* Logo Section */
     .logo {
       text-align: center;
       margin-bottom: 20px;
@@ -31,16 +33,16 @@
       max-width: 250px;
       height: auto;
       border-radius: 10px;
+      border: 3px solid #003A6C; /* Nepalese flag blue */
     }
 
     p {
       text-align: center;
-      color: #d1b27d;
-      font-size: 22px;
+      color: #003A6C; /* Nepalese flag blue */
+      font-size: 24px;
       font-weight: bold;
     }
 
-    /* Menu Section */
     .menu {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -49,12 +51,12 @@
     }
 
     .item {
-      background: #1F3D31;
+      background: #3B6F6B; /* Dark greenish to resemble Nepalese tea */
       border-radius: 15px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
       text-align: center;
       padding: 20px;
-      border: 1px solid #d1b27d;
+      border: 1px solid #f0a500;
       position: relative;
     }
 
@@ -63,13 +65,13 @@
       height: 250px;
       object-fit: cover;
       border-radius: 50%;
-      border: 3px solid #d1b27d;
+      border: 3px solid #003A6C;
     }
 
     .item h3 {
       margin-top: 15px;
       font-size: 22px;
-      color: #d1b27d;
+      color: #f0a500;
     }
 
     .item p {
@@ -79,19 +81,19 @@
 
     .order-form {
       margin-top: 40px;
-      background: #1F3D31;
+      background: #3B6F6B;
       padding: 25px;
       border-radius: 10px;
       box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
       max-width: 600px;
       margin-left: auto;
       margin-right: auto;
-      border: 2px solid #d1b27d;
+      border: 2px solid #f0a500;
     }
 
     .order-form h2 {
       text-align: center;
-      color: #d1b27d;
+      color: #f0a500;
       font-size: 24px;
     }
 
@@ -99,7 +101,7 @@
       display: block;
       margin-top: 15px;
       font-weight: bold;
-      color: #d1b27d;
+      color: #f0a500;
     }
 
     .order-form input, .order-form textarea {
@@ -112,8 +114,8 @@
     }
 
     .order-form button {
-      background-color: #d1b27d;
-      color: #1F3D31;
+      background-color: #f0a500;
+      color: #003A6C;
       padding: 12px;
       border: none;
       margin-top: 20px;
@@ -127,10 +129,9 @@
       background-color: #a8945b;
     }
 
-    /* Menu Buttons */
     .menu-button {
-      background-color: #d1b27d;
-      color: #1F3D31;
+      background-color: #f0a500;
+      color: #003A6C;
       padding: 12px;
       border-radius: 6px;
       font-weight: bold;
@@ -146,7 +147,7 @@
     .social-icons a {
       text-decoration: none;
       margin: 0 10px;
-      color: #d1b27d;
+      color: #f0a500;
       font-size: 20px;
     }
 
@@ -154,48 +155,57 @@
       color: #f0f0f0;
     }
 
+    /* Total Price Section */
+    .total-price {
+      font-size: 20px;
+      color: #f0a500;
+      text-align: center;
+      margin-top: 20px;
+    }
   </style>
 </head>
 <body>
 
-  <!-- Logo Section -->
   <div class="logo">
     <img src="brewup-logo.png" alt="BrewUp Logo">
   </div>
 
   <p>The Best Coffee for You</p>
 
-  <!-- Menu Section -->
   <div class="menu">
     <div class="item">
       <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?fit=crop&w=500&q=80" alt="Hot Americano">
       <h3>Hot Americano</h3>
       <p>Rs. 120</p>
+      <input type="checkbox" name="order" value="Hot Americano" class="coffee-item" data-price="120"> Select
     </div>
 
     <div class="item">
       <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?fit=crop&w=500&q=80" alt="Hot Coffee">
       <h3>Hot Coffee</h3>
       <p>Rs. 150</p>
+      <input type="checkbox" name="order" value="Hot Coffee" class="coffee-item" data-price="150"> Select
     </div>
 
     <div class="item">
       <img src="https://images.unsplash.com/photo-1605470301974-6a04310e2735?fit=crop&w=500&q=80" alt="Iced Latte">
       <h3>Iced Latte</h3>
       <p>Rs. 200</p>
+      <input type="checkbox" name="order" value="Iced Latte" class="coffee-item" data-price="200"> Select
     </div>
 
     <div class="item">
       <img src="https://images.unsplash.com/photo-1587248728531-9be0d92e89f9?fit=crop&w=500&q=80" alt="Cold Coffee with Ice Cream">
       <h3>Cold Coffee with Ice Cream</h3>
       <p>Rs. 250</p>
+      <input type="checkbox" name="order" value="Cold Coffee with Ice Cream" class="coffee-item" data-price="250"> Select
     </div>
   </div>
 
   <!-- Order Form Section -->
   <div class="order-form">
     <h2>Place Your Order</h2>
-    <form action="https://formsubmit.co/your-email@example.com" method="POST">
+    <form action="https://formsubmit.co/anitapkh3@gmail.com" method="POST">
       <label for="name">Your Name:</label>
       <input type="text" name="name" required>
 
@@ -227,7 +237,11 @@
         </label>
       </div>
 
-      <button type="submit">Submit Order</button>
+      <div class="total-price">
+        Total Fare: Rs. 0
+      </div>
+
+      <button type="submit" onclick="window.location.href='thank-you.html';">Submit Order</button>
     </form>
   </div>
 
@@ -235,8 +249,25 @@
   <div class="social-icons" style="text-align:center; margin-top: 30px;">
     <a href="#">Facebook</a>
     <a href="#">Instagram</a>
-    <a href="#">Twitter</a>
   </div>
+
+  <script>
+    const coffeeItems = document.querySelectorAll('.coffee-item');
+    const totalPriceElement = document.querySelector('.total-price');
+    let totalPrice = 0;
+
+    coffeeItems.forEach(item => {
+      item.addEventListener('change', () => {
+        totalPrice = 0;
+        coffeeItems.forEach(i => {
+          if (i.checked) {
+            totalPrice += parseInt(i.getAttribute('data-price'));
+          }
+        });
+        totalPriceElement.textContent = 'Total Fare: Rs. ' + totalPrice;
+      });
+    });
+  </script>
 
 </body>
 </html>
