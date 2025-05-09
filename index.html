@@ -15,30 +15,32 @@
 
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f3f2ed;
+      font-family: 'Arial', sans-serif;
+      background-color: #0F2B23;
+      color: #f0f0f0;
       padding: 20px;
-      color: #4e342e;
     }
 
+    /* Logo Section */
     .logo {
       text-align: center;
       margin-bottom: 20px;
     }
 
     .logo img {
-      max-width: 300px;
-      width: 100%;
+      max-width: 250px;
       height: auto;
+      border-radius: 10px;
     }
 
     p {
       text-align: center;
-      color: #556b2f;
-      font-size: 18px;
+      color: #d1b27d;
+      font-size: 22px;
       font-weight: bold;
     }
 
+    /* Menu Section */
     .menu {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -47,91 +49,121 @@
     }
 
     .item {
-      background: #ffffff;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      overflow: hidden;
+      background: #1F3D31;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
       text-align: center;
-      padding: 15px;
-      border: 1px solid #ccc;
+      padding: 20px;
+      border: 1px solid #d1b27d;
+      position: relative;
     }
 
     .item img {
       width: 100%;
-      height: 200px;
+      height: 250px;
       object-fit: cover;
-      border-radius: 6px;
+      border-radius: 50%;
+      border: 3px solid #d1b27d;
     }
 
     .item h3 {
-      margin: 10px 0 5px;
-      font-size: 18px;
-      color: #4e342e;
+      margin-top: 15px;
+      font-size: 22px;
+      color: #d1b27d;
     }
 
     .item p {
       font-size: 16px;
-      color: #556b2f;
+      color: #f0f0f0;
     }
 
     .order-form {
       margin-top: 40px;
-      background: #ffffff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      max-width: 500px;
+      background: #1F3D31;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+      max-width: 600px;
       margin-left: auto;
       margin-right: auto;
-      border: 2px solid #4e342e;
+      border: 2px solid #d1b27d;
     }
 
     .order-form h2 {
       text-align: center;
-      color: #4e342e;
+      color: #d1b27d;
+      font-size: 24px;
     }
 
     .order-form label {
       display: block;
-      margin-top: 10px;
+      margin-top: 15px;
       font-weight: bold;
-      color: #556b2f;
+      color: #d1b27d;
     }
 
     .order-form input, .order-form textarea {
       width: 100%;
-      padding: 10px;
+      padding: 12px;
       margin-top: 5px;
       border: 1px solid #ccc;
-      border-radius: 5px;
+      border-radius: 6px;
       box-sizing: border-box;
     }
 
     .order-form button {
-      background-color: #4e342e;
-      color: white;
-      padding: 10px 20px;
+      background-color: #d1b27d;
+      color: #1F3D31;
+      padding: 12px;
       border: none;
-      margin-top: 15px;
+      margin-top: 20px;
       width: 100%;
-      font-size: 16px;
+      font-size: 18px;
       cursor: pointer;
-      border-radius: 5px;
+      border-radius: 6px;
     }
 
     .order-form button:hover {
-      background-color: #3b261d;
+      background-color: #a8945b;
     }
+
+    /* Menu Buttons */
+    .menu-button {
+      background-color: #d1b27d;
+      color: #1F3D31;
+      padding: 12px;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 18px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .menu-button:hover {
+      background-color: #a8945b;
+    }
+
+    .social-icons a {
+      text-decoration: none;
+      margin: 0 10px;
+      color: #d1b27d;
+      font-size: 20px;
+    }
+
+    .social-icons a:hover {
+      color: #f0f0f0;
+    }
+
   </style>
 </head>
 <body>
 
-  <!-- Logo section -->
+  <!-- Logo Section -->
   <div class="logo">
     <img src="brewup-logo.png" alt="BrewUp Logo">
   </div>
 
-  <p>Delicious coffee delivered to your doorstep</p>
+  <p>The Best Coffee for You</p>
 
   <!-- Menu Section -->
   <div class="menu">
@@ -197,6 +229,13 @@
 
       <button type="submit">Submit Order</button>
     </form>
+  </div>
+
+  <!-- Social Media Links -->
+  <div class="social-icons" style="text-align:center; margin-top: 30px;">
+    <a href="#">Facebook</a>
+    <a href="#">Instagram</a>
+    <a href="#">Twitter</a>
   </div>
 
 </body>
