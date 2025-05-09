@@ -16,9 +16,9 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f8f5f2;
+      background-color: #f3f2ed;
       padding: 20px;
-      color: #3b2e2a;
+      color: #4e342e;
     }
 
     .logo {
@@ -32,9 +32,11 @@
       height: auto;
     }
 
-    h1 {
-      color: #6B4226;
+    p {
       text-align: center;
+      color: #556b2f;
+      font-size: 18px;
+      font-weight: bold;
     }
 
     .menu {
@@ -45,12 +47,13 @@
     }
 
     .item {
-      background: #fff;
+      background: #ffffff;
       border-radius: 8px;
       box-shadow: 0 4px 6px rgba(0,0,0,0.1);
       overflow: hidden;
       text-align: center;
       padding: 15px;
+      border: 1px solid #ccc;
     }
 
     .item img {
@@ -63,11 +66,61 @@
     .item h3 {
       margin: 10px 0 5px;
       font-size: 18px;
+      color: #4e342e;
     }
 
     .item p {
       font-size: 16px;
-      color: #4e3c37;
+      color: #556b2f;
+    }
+
+    .order-form {
+      margin-top: 40px;
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      border: 2px solid #4e342e;
+    }
+
+    .order-form h2 {
+      text-align: center;
+      color: #4e342e;
+    }
+
+    .order-form label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+      color: #556b2f;
+    }
+
+    .order-form input, .order-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    .order-form button {
+      background-color: #4e342e;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      margin-top: 15px;
+      width: 100%;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .order-form button:hover {
+      background-color: #3b261d;
     }
   </style>
 </head>
@@ -78,8 +131,9 @@
     <img src="brewup-logo.png" alt="BrewUp Logo">
   </div>
 
-  <p style="text-align:center;">Delicious coffee delivered to your doorstep.</p>
+  <p>Delicious coffee delivered to your doorstep</p>
 
+  <!-- Menu Section -->
   <div class="menu">
     <div class="item">
       <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?fit=crop&w=500&q=80" alt="Hot Americano">
@@ -104,6 +158,26 @@
       <h3>Cold Coffee with Ice Cream</h3>
       <p>Rs. 250</p>
     </div>
+  </div>
+
+  <!-- Order Form Section -->
+  <div class="order-form">
+    <h2>Place Your Order</h2>
+    <form action="https://formsubmit.co/your-email@example.com" method="POST">
+      <label for="name">Your Name:</label>
+      <input type="text" name="name" required>
+
+      <label for="phone">Phone Number:</label>
+      <input type="text" name="phone" required>
+
+      <label for="address">Delivery Address:</label>
+      <textarea name="address" rows="3" required></textarea>
+
+      <label for="order">What would you like to order?</label>
+      <textarea name="order" rows="3" placeholder="E.g., 1 Hot Coffee, 1 Cold Coffee with Ice Cream" required></textarea>
+
+      <button type="submit">Submit Order</button>
+    </form>
   </div>
 
 </body>
