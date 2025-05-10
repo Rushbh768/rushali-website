@@ -1,261 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>BrewUp – Coffee Delivery</title>
-
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XTYM131HY8"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XTYM131HY8');
-  </script>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BrewUp - Coffee Order</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" />
   <style>
     body {
-      font-family: 'Arial', sans-serif;
-      background-color: #9C2A2D;
-      color: #f0f0f0;
-      padding: 20px;
-      background-image: url('nepalese-background.png');
-      background-size: cover;
-      background-position: center;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background-color: #f5f4ec;
+      color: #2f4f4f;
     }
 
-    .logo {
+    header {
+      background-color: #e6f0d5;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    header img {
+      height: 60px;
+    }
+
+    h1 {
       text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .logo img {
-      max-width: 250px;
-      border-radius: 10px;
-      border: 3px solid #003A6C;
-    }
-
-    p {
-      text-align: center;
-      color: #003A6C;
-      font-size: 24px;
-      font-weight: bold;
+      margin-top: 20px;
+      color: #3c594e;
     }
 
     .menu {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 20px;
-      margin-top: 30px;
+      padding: 20px;
+      max-width: 1000px;
+      margin: auto;
     }
 
     .item {
-      background: #3B6F6B;
+      background-color: #ffffff;
       border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      padding: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       text-align: center;
-      padding: 20px;
-      border: 1px solid #f0a500;
     }
 
     .item img {
       width: 100%;
-      height: 250px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 3px solid #003A6C;
-    }
-
-    .item h3 {
-      margin-top: 15px;
-      font-size: 22px;
-      color: #f0a500;
-    }
-
-    .item p {
-      font-size: 16px;
-      color: #f0f0f0;
-    }
-
-    .order-form {
-      margin-top: 40px;
-      background: #3B6F6B;
-      padding: 25px;
       border-radius: 10px;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-      border: 2px solid #f0a500;
+      height: 180px;
+      object-fit: cover;
     }
 
-    .order-form h2 {
-      text-align: center;
-      color: #f0a500;
-      font-size: 24px;
-    }
-
-    .order-form label {
+    .item label {
       display: block;
-      margin-top: 15px;
+      margin-top: 10px;
       font-weight: bold;
-      color: #f0a500;
+      color: #4d6652;
     }
 
-    .order-form input, .order-form textarea {
-      width: 100%;
-      padding: 12px;
+    .price {
       margin-top: 5px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      box-sizing: border-box;
+      font-size: 14px;
+      color: #555;
     }
 
-    .order-form button {
-      background-color: #f0a500;
-      color: #003A6C;
-      padding: 12px;
-      border: none;
-      margin-top: 20px;
-      width: 100%;
-      font-size: 18px;
-      cursor: pointer;
-      border-radius: 6px;
-    }
-
-    .order-form button:hover {
-      background-color: #a8945b;
-    }
-
-    .total-price {
-      font-size: 20px;
-      color: #f0a500;
+    .total {
       text-align: center;
-      margin-top: 20px;
+      font-size: 20px;
+      margin: 20px;
+      color: #3c594e;
     }
 
-    .social-icons {
+    .order-btn {
+      display: block;
+      margin: 20px auto;
+      background-color: #9abf6e;
+      color: white;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .order-btn:hover {
+      background-color: #7ba854;
+    }
+
+    footer {
       text-align: center;
       margin-top: 30px;
-    }
-
-    .social-icons a {
-      text-decoration: none;
-      margin: 0 10px;
-      color: #f0a500;
-      font-size: 20px;
-    }
-
-    .social-icons a:hover {
-      color: #f0f0f0;
+      padding: 20px;
+      background-color: #e6f0d5;
+      color: #2f4f4f;
     }
   </style>
 </head>
 <body>
 
-  <div class="logo">
-    <img src="brewup-logo.png" alt="BrewUp Logo">
-  </div>
+<header>
+  <img src="brewup-logo.png.jpeg" alt="BrewUp Logo" />
+  <h2>BrewUp Coffee</h2>
+</header>
 
-  <p>The Best Coffee for You</p>
+<h1>Choose Your Coffee</h1>
 
+<form id="orderForm" action="https://formspree.io/f/xkndkggv" method="POST" onsubmit="return submitOrder()">
   <div class="menu">
     <div class="item">
-      <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?fit=crop&w=500&q=80" alt="Hot Americano">
-      <h3>Hot Americano</h3>
-      <p>Rs. 120</p>
-      <input type="checkbox" class="coffee-item" data-price="120" value="Hot Americano"> Select
+      <img src="hot-americano.jpeg" alt="Americano" />
+      <label><input type="checkbox" name="coffee" value="Americano" data-price="150"> Americano</label>
+      <div class="price">Rs. 150</div>
     </div>
 
     <div class="item">
-      <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?fit=crop&w=500&q=80" alt="Hot Coffee">
-      <h3>Hot Coffee</h3>
-      <p>Rs. 150</p>
-      <input type="checkbox" class="coffee-item" data-price="150" value="Hot Coffee"> Select
+      <img src="hot-coffee.jpg" alt="Hot Coffee" />
+      <label><input type="checkbox" name="coffee" value="Hot Coffee" data-price="180"> Hot Coffee</label>
+      <div class="price">Rs. 180</div>
     </div>
 
     <div class="item">
-      <img src="https://images.unsplash.com/photo-1605470301974-6a04310e2735?fit=crop&w=500&q=80" alt="Iced Latte">
-      <h3>Iced Latte</h3>
-      <p>Rs. 200</p>
-      <input type="checkbox" class="coffee-item" data-price="200" value="Iced Latte"> Select
+      <img src="Iced-Latte.jpg" alt="Iced Latte" />
+      <label><input type="checkbox" name="coffee" value="Iced Latte" data-price="200"> Iced Latte</label>
+      <div class="price">Rs. 200</div>
     </div>
 
     <div class="item">
-      <img src="https://images.unsplash.com/photo-1587248728531-9be0d92e89f9?fit=crop&w=500&q=80" alt="Cold Coffee with Ice Cream">
-      <h3>Cold Coffee with Ice Cream</h3>
-      <p>Rs. 250</p>
-      <input type="checkbox" class="coffee-item" data-price="250" value="Cold Coffee with Ice Cream"> Select
+      <img src="cold-coffee.jpg" alt="Cold Coffee" />
+      <label><input type="checkbox" name="coffee" value="Cold Coffee" data-price="170"> Cold Coffee</label>
+      <div class="price">Rs. 170</div>
     </div>
   </div>
 
-  <!-- Order Form Section -->
-  <div class="order-form">
-    <h2>Place Your Order</h2>
-    <form action="https://formsubmit.co/anitapkh3@gmail.com" method="POST" onsubmit="return redirectToThankYou();">
-      <label for="name">Your Name:</label>
-      <input type="text" name="name" required>
+  <div class="total">Total: Rs. <span id="totalPrice">0</span></div>
 
-      <label for="phone">Phone Number:</label>
-      <input type="text" name="phone" required>
+  <input type="hidden" name="totalAmount" id="hiddenTotal" />
+  <input type="hidden" name="_redirect" value="thank-you.html">
+  <input type="hidden" name="_replyto" value="anitapkh3@gmail.com">
 
-      <label for="address">Delivery Address:</label>
-      <textarea name="address" rows="3" required></textarea>
+  <button type="submit" class="order-btn">Place Order</button>
+</form>
 
-      <label>Select Your Coffee:</label>
-      <div id="selected-items-container">
-        <!-- Selected checkboxes will be cloned here -->
-      </div>
+<footer>
+  &copy; 2025 BrewUp Coffee. All rights reserved.
+</footer>
 
-      <div class="total-price" id="total-fare">Total Fare: Rs. 0</div>
+<script>
+  const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+  const totalPriceEl = document.getElementById('totalPrice');
+  const hiddenTotal = document.getElementById('hiddenTotal');
 
-      <!-- Hidden redirect for thank-you page -->
-      <input type="hidden" name="_next" value="thank-you.html">
-
-      <button type="submit">Order Now</button>
-    </form>
-  </div>
-
-  <!-- Social Media Links -->
-  <div class="social-icons">
-    <a href="#">Facebook</a>
-    <a href="#">Instagram</a>
-  </div>
-
-  <script>
-    const items = document.querySelectorAll('.coffee-item');
-    const totalDisplay = document.getElementById('total-fare');
-    const selectedItemsContainer = document.getElementById('selected-items-container');
-
-    function updateTotal() {
-      let total = 0;
-      selectedItemsContainer.innerHTML = '';
-
-      items.forEach(item => {
-        if (item.checked) {
-          total += parseInt(item.getAttribute('data-price'));
-          const input = document.createElement('input');
-          input.type = 'hidden';
-          input.name = 'order';
-          input.value = item.value;
-          selectedItemsContainer.appendChild(input);
-        }
-      });
-
-      totalDisplay.textContent = 'Total Fare: Rs. ' + total;
-    }
-
-    items.forEach(item => {
-      item.addEventListener('change', updateTotal);
+  function updateTotal() {
+    let total = 0;
+    checkboxes.forEach(cb => {
+      if (cb.checked) {
+        total += parseInt(cb.dataset.price);
+      }
     });
+    totalPriceEl.textContent = total;
+    hiddenTotal.value = total;
+  }
 
-    function redirectToThankYou() {
-      setTimeout(() => {
-        window.location.href = "thank-you.html";
-      }, 1000); // Optional delay
-      return true;
+  checkboxes.forEach(cb => cb.addEventListener('change', updateTotal));
+
+  function submitOrder() {
+    const selectedItems = Array.from(checkboxes)
+      .filter(cb => cb.checked)
+      .map(cb => cb.value)
+      .join(', ');
+
+    if (!selectedItems) {
+      alert('Please select at least one coffee!');
+      return false;
     }
-  </script>
+
+    return true;
+  }
+</script>
 
 </body>
 </html>
