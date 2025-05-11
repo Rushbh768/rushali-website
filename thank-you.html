@@ -1,31 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Thank You!</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thank You - BrewUp</title>
+  
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XTYM131HY8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XTYM131HY8');
+  </script>
+  
   <style>
     body {
-      font-family: Poppins, sans-serif;
+      font-family: 'Poppins', sans-serif;
       background-color: #f5f4ec;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
+      color: #2f4f4f;
       text-align: center;
-      color: #3c594e;
+      padding: 50px;
     }
-    .thank-you {
-      max-width: 500px;
-      padding: 30px;
-      background-color: #e6f0d5;
-      border-radius: 20px;
+
+    h1 {
+      color: #3c594e;
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    p {
+      color: #555;
+      font-size: 20px;
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 14px;
+      color: #3c594e;
     }
   </style>
 </head>
 <body>
-  <div class="thank-you">
-    <h1>Thank You for Your Order!</h1>
-    <p>Your coffee is brewing and will be delivered soon ☕</p>
-  </div>
+
+<h1>Thank You for Your Order!</h1>
+<p>Your coffee will be delivered soon. We appreciate your business!</p>
+
+<footer>
+  &copy; 2025 BrewUp Coffee. All rights reserved.
+</footer>
+
 </body>
 </html>
