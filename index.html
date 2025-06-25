@@ -138,29 +138,30 @@
 
 <h1>Choose Your Coffee</h1>
 
-<form name="coffee-order" method="POST" data-netlify="true" action="/thank-you.html" onsubmit="return validateForm()">
+<form name="coffee-order" method="POST" data-netlify="true" action="/thank-you.html">
+  <!-- onsubmit="return validateForm()" removed for testing -->
   <div class="menu">
     <div class="item">
       <img src="hot-americano.jpeg" alt="Americano" />
-      <label><input type="checkbox" name="coffee[]" value="Americano - Rs. 150" data-price="150"> Americano</label>
+      <label><input type="checkbox" name="coffee1" value="Americano - Rs. 150" data-price="150"> Americano</label>
       <div class="price">Rs. 150</div>
     </div>
 
     <div class="item">
       <img src="hot-coffee.jpg" alt="Hot Coffee" />
-      <label><input type="checkbox" name="coffee[]" value="Hot Coffee - Rs. 180" data-price="180"> Hot Coffee</label>
+      <label><input type="checkbox" name="coffee1" value="Hot Coffee - Rs. 180" data-price="180"> Hot Coffee</label>
       <div class="price">Rs. 180</div>
     </div>
 
     <div class="item">
       <img src="Iced-Latte.jpg" alt="Iced Latte" />
-      <label><input type="checkbox" name="coffee[]" value="Iced Latte - Rs. 200" data-price="200"> Iced Latte</label>
+      <label><input type="checkbox" name="coffee1" value="Iced Latte - Rs. 200" data-price="200"> Iced Latte</label>
       <div class="price">Rs. 200</div>
     </div>
 
     <div class="item">
       <img src="cold-coffee.jpg" alt="Cold Coffee" />
-      <label><input type="checkbox" name="coffee[]" value="Cold Coffee - Rs. 170" data-price="170"> Cold Coffee</label>
+      <label><input type="checkbox" name="coffee1" value="Cold Coffee - Rs. 170" data-price="170"> Cold Coffee</label>
       <div class="price">Rs. 170</div>
     </div>
   </div>
