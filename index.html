@@ -165,4 +165,68 @@
     </div>
   </div>
 
-  <div class="form-group
+  <div class="form-group">
+    <label>Phone Number:</label>
+    <input type="text" name="phone" required />
+  </div>
+
+  <div class="form-group">
+    <label>Address:</label>
+    <textarea name="address" required></textarea>
+  </div>
+
+  <div class="total">Total: Rs. <span id="totalPrice">0</span></div>
+  <input type="hidden" name="totalAmount" id="hiddenTotal" />
+
+  <button type="submit" class="order-btn">Place Order</button>
+</form>
+
+<footer>
+  &copy; 2025 Ghumti Coffee. All rights reserved.
+</footer>
+
+<script>
+  const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+  const totalPriceEl = document.getElementById('totalPrice');
+  const hiddenTotal = document.getElementById('hiddenTotal');
+  const form = document.getElementById('coffeeOrderForm'); // Get the form by its new ID
+
+  function updateTotal() {
+    let total = 0;
+    checkboxes.forEach(cb => {
+      if (cb.checked) {
+        total += parseInt(cb.dataset.price);
+      }
+    });
+    totalPriceEl.textContent = total;
+    hiddenTotal.value = total;
+  }
+
+  checkboxes.forEach(cb => cb.addEventListener('change', updateTotal));
+
+  // Listen for the form submission
+  form.addEventListener('submit', function(event) {
+    // Prevent default form submission to let Netlify's JS handle it first
+    event.preventDefault();
+
+    // Perform your existing validation (optional, if you want it client-side)
+    const selected = Array.from(checkboxes).some(cb => cb.checked);
+    if (!selected) {
+      alert("Please select at least one coffee item.");
+      return; // Stop the function if validation fails
+    }
+
+    // Submit the form using native HTMLFormElement.submit()
+    // Netlify's data-netlify="true" will still intercept and process this in the background.
+    this.submit(); // 'this' refers to the form element
+
+    // AFTER Netlify processes the form (which happens very quickly in the background),
+    // we will redirect manually using JavaScript for an immediate transition.
+    setTimeout(() => {
+      window.location.href = '/thank-you.html';
+    }, 0); // Redirect as soon as possible after current script
+  });
+</script>
+
+</body>
+</html>
