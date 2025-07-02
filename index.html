@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Ghumti - Coffee Order</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" />
-  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XTYM131HY8"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -14,6 +13,7 @@
     gtag('config', 'G-XTYM131HY8');
   </script>
   <style>
+    /* ... Your existing CSS styles remain here ... */
     body {
       font-family: 'Poppins', sans-serif;
       margin: 0;
@@ -138,9 +138,8 @@
 
 <h1>Choose Your Coffee</h1>
 
-<form name="coffee-order" method="POST" data-netlify="true" action="/thank-you.html">
+<form id="coffeeOrderForm" name="coffee-order" method="POST" data-netlify="true">
   <input type="hidden" name="form-name" value="coffee-order">
-  <!-- onsubmit="return validateForm()" removed for testing -->
   <div class="menu">
     <div class="item">
       <img src="hot-americano.jpeg" alt="Americano" />
@@ -191,6 +190,7 @@
   const checkboxes = document.querySelectorAll('input[type="checkbox"]');
   const totalPriceEl = document.getElementById('totalPrice');
   const hiddenTotal = document.getElementById('hiddenTotal');
+  const form = document.getElementById('coffeeOrderForm'); // Get the form by its new ID
 
   function updateTotal() {
     let total = 0;
@@ -205,14 +205,32 @@
 
   checkboxes.forEach(cb => cb.addEventListener('change', updateTotal));
 
-  function validateForm() {
+  // Listen for the form submission
+  form.addEventListener('submit', function(event) {
+    // Prevent default form submission to let Netlify's JS handle it first
+    event.preventDefault();
+
+    // Perform your existing validation (optional, if you want it client-side)
     const selected = Array.from(checkboxes).some(cb => cb.checked);
     if (!selected) {
       alert("Please select at least one coffee item.");
-      return false;
+      return; // Stop the function if validation fails
     }
-    return true;
-  }
+
+    // Submit the form using native HTMLFormElement.submit()
+    // Netlify's data-netlify="true" will still intercept and process this in the background.
+    this.submit(); // 'this' refers to the form element
+
+    // AFTER Netlify processes the form (which happens very quickly in the background),
+    // we will redirect manually using JavaScript.
+    setTimeout(() => {
+      window.location.href = '/thank-you.html';
+    }, 100); // Redirect after 100 milliseconds to give Netlify a moment
+  });
+
+  // The old validateForm function is no longer directly used in onsubmit,
+  // its logic is now incorporated into the event listener.
+  // function validateForm() { ... }
 </script>
 
 </body>
