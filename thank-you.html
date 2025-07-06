@@ -1,54 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Thank You - Ghumti Coffee</title>
-  
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XTYM131HY8"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XTYM131HY8');
-  </script>
-  
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #f5f4ec;
-      color: #2f4f4f;
-      text-align: center;
-      padding: 50px;
-    }
-
-    h1 {
-      color: #3c594e;
-      font-size: 36px;
-      margin-bottom: 20px;
-    }
-
-    p {
-      color: #555;
-      font-size: 20px;
-    }
-
-    footer {
-      margin-top: 40px;
-      font-size: 14px;
-      color: #3c594e;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You for Your Order!</title>
+    <link rel="stylesheet" href="style.css"> <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        .thank-you-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        p {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+        .home-button {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #28a745; /* Green color, adjust as needed */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+        .home-button:hover {
+            background-color: #218838; /* Darker green on hover */
+        }
+    </style>
 </head>
 <body>
-
-<h1>Thank You for Your Order!</h1>
-<p>Your coffee will be delivered soon. We appreciate your business!</p>
-
-<footer>
-  &copy; 2025 Ghumti Coffee. All rights reserved.
-</footer>
-
+    <div class="thank-you-container">
+        <h1>Thank You for Your Order!</h1>
+        <p>Your order has been successfully placed. We appreciate your business!</p>
+        <p>You will receive a confirmation shortly.</p>
+        <a href="index.html" class="home-button">Go to Home</a>
+    </div>
 </body>
 </html>
