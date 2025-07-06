@@ -118,7 +118,7 @@
     .order-btn:hover {
       background-color: #7ba854;
     }
-    /* Added style for disabled button state - you can adjust colors */
+    /* Added style for disabled button state */
     .order-btn:disabled {
         background-color: #cccccc; /* Light gray */
         cursor: not-allowed;
@@ -173,7 +173,7 @@
   <div class="form-group">
     <label>Phone Number:</label>
     <input type="text" name="phone" required />
-  </div>
+      </div>
 
   <div class="form-group">
     <label>Address:</label>
@@ -211,8 +211,6 @@
   checkboxes.forEach(cb => cb.addEventListener('change', updateTotal));
 
     // Function to generate a UUID (for unique request_id)
-    // This is a simple implementation for demonstration. For critical applications,
-    // consider a more robust UUID library.
     function generateUUID() {
         return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
             var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
@@ -251,8 +249,8 @@
 
     // 3. Prepare the data payload for the Netlify Function
     const orderData = {
-      coffee_items: coffeeItems, // Renamed to match DB if needed, previously 'coffeeItems'
-      phone_numb: phoneNumber, // Renamed to match DB if needed, previously 'phoneNumber'
+      coffee_items: coffeeItems,
+      phone_numb: phoneNumber,
       address: address,
       total_amount: totalAmount,
       request_id: requestId // Add the generated unique ID
