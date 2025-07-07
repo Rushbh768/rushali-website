@@ -1,107 +1,77 @@
-thank you <!DOCTYPE html>
-
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-
   <meta charset="UTF-8" />
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
   <title>Thank You - Ghumti Coffee</title>
-
   
-
-  <!-- Google Analytics -->
-
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XTYM131HY8"></script>
-
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XTYM131HY8"></script>
   <script>
-
     window.dataLayer = window.dataLayer || [];
-
     function gtag(){dataLayer.push(arguments);}
-
     gtag('js', new Date());
-
     gtag('config', 'G-XTYM131HY8');
-
   </script>
-
   
-
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" />
+  
   <style>
-
     body {
-
       font-family: 'Poppins', sans-serif;
-
-      background-color: #f5f4ec;
-
-      color: #2f4f4f;
-
+      background-color: #f5f4ec; /* Light beige from homepage */
+      color: #2f4f4f; /* Dark text color from homepage */
       text-align: center;
-
-      padding: 50px;
-
+      display: flex; /* For vertical centering */
+      flex-direction: column; /* For vertical centering */
+      justify-content: center; /* Center content vertically */
+      align-items: center; /* Center content horizontally */
+      min-height: 100vh; /* Make body take full viewport height */
+      margin: 0; /* Remove default body margin */
     }
 
-
+    .thank-you-content { /* Container for main content */
+      background-color: #ffffff; /* White background like your .item in index.html */
+      border-radius: 15px; /* Rounded corners */
+      padding: 30px 40px; /* More generous padding */
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow */
+      max-width: 500px; /* Max width for content */
+      margin-bottom: 20px; /* Add some space before footer */
+    }
 
     h1 {
-
-      color: #3c594e;
-
+      color: #3c594e; /* Dark olive green from homepage */
       font-size: 36px;
-
       margin-bottom: 20px;
-
+      font-weight: bold; /* Bolder font */
     }
-
-
 
     p {
-
       color: #555;
-
       font-size: 20px;
-
+      margin-bottom: 0; /* No margin below paragraph if no button */
+      font-weight: 500; /* Medium bold for paragraph */
     }
-
-
 
     footer {
-
-      margin-top: 40px;
-
-      font-size: 14px;
-
-      color: #3c594e;
-
+      margin-top: auto; /* Pushes footer to the bottom when using flexbox */
+      padding: 20px; /* Added padding to footer */
+      background-color: #e6f0d5; /* Light olive green from homepage */
+      color: #2f4f4f; /* Dark text color from homepage */
+      width: 100%; /* Ensure footer spans full width */
+      box-sizing: border-box; /* Include padding in width */
     }
-
   </style>
-
 </head>
-
 <body>
 
-
-
-<h1>Thank You for Your Order!</h1>
-
-<p>Your coffee will be delivered soon.</p>
-
-
+<div class="thank-you-content">
+  <h1>Thank You for Your Order!</h1>
+  <p>Your coffee will be delivered soon.</p>
+</div>
 
 <footer>
-
   &copy; 2025 Ghumti Coffee. All rights reserved.
-
 </footer>
 
-
-
 </body>
-
 </html>
