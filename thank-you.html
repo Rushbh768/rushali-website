@@ -1,91 +1,111 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Thank You - Ghumti Coffee</title>
-  
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XTYM131HY8"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XTYM131HY8');
-  </script>
- 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" />
-  
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #f5f4ec;
-      color: #2f4f4f;
-      text-align: center;
-      padding: 50px;
-      display: flex; /* Added for vertical centering */
-      flex-direction: column; /* Added for vertical centering */
-      justify-content: center; /* Added for vertical centering */
-      align-items: center; /* Added for horizontal centering */
-      min-height: 100vh; /* Make body take full viewport height */
-      margin: 0; /* Remove default body margin */
+place oder // netlify/functions/place-order.js
+
+const { createClient } = require('@supabase/supabase-js');
+
+
+
+// Load environment variables (set in Netlify later)
+
+const supabaseUrl = process.env.SUPABASE_URL;
+
+const supabaseServiceKey = process.env.SUPABASE_SERVICE_KEY; // Use service_role key for server-side
+
+
+
+const supabase = createClient(supabaseUrl, supabaseServiceKey);
+
+
+
+exports.handler = async (event) => {
+
+    if (event.httpMethod !== 'POST') {
+
+        return { statusCode: 405, body: 'Method Not Allowed' };
+
     }
 
-    .thank-you-content { /* Container for main content */
-      background-color: #ffffff; /* White background like your .item in index.html */
-      border-radius: 15px; /* Rounded corners */
-      padding: 30px 40px; /* More generous padding */
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow */
-      max-width: 500px; /* Max width for content */
-      margin: auto; /* Center the box */
+
+
+    try {
+
+        // Netlify Functions parse JSON bodies automatically if Content-Type is application/json
+
+        const { coffeeItems, phoneNumber, address, totalAmount } = JSON.parse(event.body);
+
+
+
+        // Basic validation (add more as needed)
+
+        if (!coffeeItems || coffeeItems.length === 0 || !phoneNumber || !address || !totalAmount) {
+
+            return { statusCode: 400, body: 'Missing required fields' };
+
+        }
+
+
+
+        const { data, error } = await supabase
+
+            .from('orders') // Your table name
+
+            .insert([
+
+                {
+
+                    coffee_items: coffeeItems,
+
+                    phone_number: phoneNumber,
+
+                    address: address,
+
+                    total_amount: totalAmount
+
+                },
+
+            ])
+
+            .select(); // To return the inserted data
+
+
+
+        if (error) {
+
+            console.error('Supabase insert error:', error);
+
+            return {
+
+                statusCode: 500,
+
+                body: JSON.stringify({ message: 'Error saving order to database', error: error.message }),
+
+            };
+
+        }
+
+
+
+        return {
+
+            statusCode: 200,
+
+            headers: {
+
+                'Content-Type': 'application/json',
+
+            },
+
+            body: JSON.stringify({ message: 'Order placed successfully!', order: data[0] }),
+
+        };
+
+
+
+    } catch (parseError) {
+
+        console.error('Request parsing error:', parseError);
+
+        return { statusCode: 400, body: 'Invalid JSON body' };
+
     }
 
-    h1 {
-      color: #3c594e;
-      font-size: 36px;
-      margin-bottom: 20px;
-    }
-
-    p {
-      color: #555;
-      font-size: 20px;
-      margin-bottom: 30px; /* Space before the button */
-    }
-
-    .home-button { /* Styling for the new button */
-      display: inline-block; /* Allows padding and margin */
-      background-color: #9abf6e; /* Matches your .order-btn */
-      color: white;
-      padding: 12px 25px;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      cursor: pointer;
-      text-decoration: none; /* Remove underline from link */
-      transition: background 0.3s;
-    }
-
-    .home-button:hover {
-      background-color: #7ba854; /* Darker green on hover */
-    }
-
-    footer {
-      margin-top: 40px;
-      font-size: 14px;
-      color: #3c594e;
-    }
-  </style>
-</head>
-<body>
-
-<div class="thank-you-content">
-  <h1>Thank You for Your Order!</h1>
-  <p>Your coffee will be delivered soon.</p>
-  <a href="index.html" class="home-button">Go to Home Page</a>
-</div>
-
-<footer>
-  &copy; 2025 Ghumti Coffee. All rights reserved.
-</footer>
-
-</body>
-</html>
+};
