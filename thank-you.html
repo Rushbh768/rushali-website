@@ -1,111 +1,107 @@
-place oder // netlify/functions/place-order.js
+thank you <!DOCTYPE html>
 
-const { createClient } = require('@supabase/supabase-js');
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Thank You - Ghumti Coffee</title>
+
+  
+
+  <!-- Google Analytics -->
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XTYM131HY8"></script>
+
+  <script>
+
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag(){dataLayer.push(arguments);}
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-XTYM131HY8');
+
+  </script>
+
+  
+
+  <style>
+
+    body {
+
+      font-family: 'Poppins', sans-serif;
+
+      background-color: #f5f4ec;
+
+      color: #2f4f4f;
+
+      text-align: center;
+
+      padding: 50px;
+
+    }
 
 
 
-// Load environment variables (set in Netlify later)
+    h1 {
 
-const supabaseUrl = process.env.SUPABASE_URL;
+      color: #3c594e;
 
-const supabaseServiceKey = process.env.SUPABASE_SERVICE_KEY; // Use service_role key for server-side
+      font-size: 36px;
 
-
-
-const supabase = createClient(supabaseUrl, supabaseServiceKey);
-
-
-
-exports.handler = async (event) => {
-
-    if (event.httpMethod !== 'POST') {
-
-        return { statusCode: 405, body: 'Method Not Allowed' };
+      margin-bottom: 20px;
 
     }
 
 
 
-    try {
+    p {
 
-        // Netlify Functions parse JSON bodies automatically if Content-Type is application/json
+      color: #555;
 
-        const { coffeeItems, phoneNumber, address, totalAmount } = JSON.parse(event.body);
-
-
-
-        // Basic validation (add more as needed)
-
-        if (!coffeeItems || coffeeItems.length === 0 || !phoneNumber || !address || !totalAmount) {
-
-            return { statusCode: 400, body: 'Missing required fields' };
-
-        }
-
-
-
-        const { data, error } = await supabase
-
-            .from('orders') // Your table name
-
-            .insert([
-
-                {
-
-                    coffee_items: coffeeItems,
-
-                    phone_number: phoneNumber,
-
-                    address: address,
-
-                    total_amount: totalAmount
-
-                },
-
-            ])
-
-            .select(); // To return the inserted data
-
-
-
-        if (error) {
-
-            console.error('Supabase insert error:', error);
-
-            return {
-
-                statusCode: 500,
-
-                body: JSON.stringify({ message: 'Error saving order to database', error: error.message }),
-
-            };
-
-        }
-
-
-
-        return {
-
-            statusCode: 200,
-
-            headers: {
-
-                'Content-Type': 'application/json',
-
-            },
-
-            body: JSON.stringify({ message: 'Order placed successfully!', order: data[0] }),
-
-        };
-
-
-
-    } catch (parseError) {
-
-        console.error('Request parsing error:', parseError);
-
-        return { statusCode: 400, body: 'Invalid JSON body' };
+      font-size: 20px;
 
     }
 
-};
+
+
+    footer {
+
+      margin-top: 40px;
+
+      font-size: 14px;
+
+      color: #3c594e;
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+
+
+<h1>Thank You for Your Order!</h1>
+
+<p>Your coffee will be delivered soon.</p>
+
+
+
+<footer>
+
+  &copy; 2025 Ghumti Coffee. All rights reserved.
+
+</footer>
+
+
+
+</body>
+
+</html>
