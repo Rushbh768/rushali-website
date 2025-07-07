@@ -1,64 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Thank You - Ghumti Coffee</title>
-  
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XTYM131HY8"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XTYM131HY8');
-  </script>
-  
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" />
-  
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #f5f4ec; /* Light beige from homepage */
-      color: #2f4f4f; /* Dark text color from homepage */
-      text-align: center; /* Center body text by default (e.g., footer) */
-      display: flex; /* Use flexbox for overall page layout */
-      flex-direction: column; /* Stack header, content, footer vertically */
-      justify-content: space-between; /* Push header/footer to top/bottom, content in middle */
-      align-items: center; /* Center main content horizontally */
-      min-height: 100vh; /* Make body take full viewport height */
-      margin: 0; /* Remove default body margin */
-    }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thank You - Ghumti Coffee</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" />
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f5f4ec;
+      color: #2f4f4f;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
 
     header {
-      background-color: #e6f0d5; /* Light olive green from homepage */
-      padding: 10px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start; /* Aligns content to the start (left) */
-      width: 100%; /* Ensure header spans full width */
-      box-sizing: border-box; /* Include padding in width */
-    }
+      background-color: #e6f0d5;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-    /* Removed header img styles as no logo is needed */
+    header img {
+      height: 80px;
+      margin-right: 15px;
+    }
 
-    header h2 {
-      margin: 0; /* Ensures no extra margin around the h2 */
-      color: #3c594e; /* Dark olive green from homepage */
-    }
+    header h2 {
+      margin: 0;
+      color: #3c594e;
+    }
 
-    .thank-you-content { /* Container for the main "Thank You" message */
-      background-color: #ffffff; /* White background like your .item on homepage */
-      border-radius: 15px; /* Rounded corners */
-      padding: 60px 50px; /* More generous padding for larger text */
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow */
-      max-width: 700px; /* Increased max width for larger text */
-      margin: auto; /* Centers the box within the flex container */
-      flex-grow: 1; /* Allows content to take available space and center itself */
-      display: flex; /* Use flexbox for internal content centering */
-      flex-direction: column; /* Stack h1 and p vertically */
-      justify-content: center; /* Center h1 and p vertically within their box */
-      align-items: center; /* Center h1 and p horizontally within their box */
-    }
+    main {
+      padding: 50px 20px;
+    }
 
-    h1 {
-      color: #3c594e; /* Dark olive green from homepage */
+    h1 {
+      font-size: 36px;
+      color: #3c594e;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 20px;
+      color: #555;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .thank-you-icon {
+      font-size: 60px;
+      margin-bottom: 20px;
+      color: #9abf6e;
+    }
+
+    footer {
+      margin-top: 50px;
+      padding: 20px;
+      background-color: #e6f0d5;
+      color: #2f4f4f;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="brewup-logo.png.jpeg" alt="Ghumti Logo" />
+    <h2>Ghumti Coffee</h2>
+  </header>
+
+  <main>
+    <div class="thank-you-icon">☕</div>
+    <h1>Thank You for Your Order!</h1>
+    <p>Your coffee is being brewed with love and will be on its way to you shortly. We truly appreciate your support and hope you enjoy your drink!</p>
+  </main>
+
+  <footer>
+    &copy; 2025 Ghumti Coffee. All rights reserved.
+  </footer>
+
+</body>
+</html>
