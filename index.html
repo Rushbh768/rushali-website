@@ -189,7 +189,7 @@
   const checkboxes = document.querySelectorAll('input[type="checkbox"]');
   const totalPriceEl = document.getElementById('totalPrice');
   const hiddenTotal = document.getElementById('hiddenTotal');
-  const form = document.getElementById('coffeeOrderForm'); // Get the form by its new ID
+  const form = document.getElementById('coffeeOrderForm'); // Get the form by its ID
 
   function updateTotal() {
     let total = 0;
@@ -205,26 +205,62 @@
   checkboxes.forEach(cb => cb.addEventListener('change', updateTotal));
 
   // Listen for the form submission
-  form.addEventListener('submit', function(event) {
-    // Prevent default form submission to let Netlify's JS handle it first
-    event.preventDefault();
+  form.addEventListener('submit', async function(event) { // Make the function 'async'
+    event.preventDefault(); // Prevent the default HTML form submission
 
-    // Perform your existing validation (optional, if you want it client-side)
+    // 1. Client-side Validation
     const selected = Array.from(checkboxes).some(cb => cb.checked);
     if (!selected) {
       alert("Please select at least one coffee item.");
-      return; // Stop the function if validation fails
+      return; // Stop execution if validation fails
     }
 
-    // Submit the form using native HTMLFormElement.submit()
-    // Netlify's data-netlify="true" will still intercept and process this in the background.
-    this.submit(); // 'this' refers to the form element
+    // 2. Gather form data
+    const coffeeItems = Array.from(checkboxes)
+                            .filter(cb => cb.checked)
+                            .map(cb => cb.value); // e.g., ["Americano - Rs. 150", "Hot Coffee - Rs. 180"]
+    
+    const phoneNumber = form.elements.phone.value;
+    const address = form.elements.address.value;
+    const totalAmount = parseInt(hiddenTotal.value); // Ensure it's an integer
 
-    // AFTER Netlify processes the form (which happens very quickly in the background),
-    // we will redirect manually using JavaScript for an immediate transition.
-    setTimeout(() => {
+    // 3. Prepare the data payload for the Netlify Function
+    const orderData = {
+      coffeeItems, // Array of selected coffee names/prices
+      phoneNumber,
+      address,
+      totalAmount
+    };
+
+    // 4. Send the data to your Netlify Function using fetch()
+    try {
+      const response = await fetch('/.netlify/functions/place-order', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json', // Tell the server we're sending JSON
+        },
+        body: JSON.stringify(orderData), // Convert your data object to a JSON string
+      });
+
+      // 5. Check if the function call was successful (HTTP status 2xx)
+      if (!response.ok) {
+        const errorData = await response.json(); // Try to parse error message from function
+        throw new Error(errorData.message || 'Failed to place order via Netlify Function');
+      }
+
+      // 6. Parse the success response from the function (optional, for logging)
+      const result = await response.json();
+      console.log('Order successfully sent to Supabase:', result);
+
+      // 7. Redirect to the thank-you page only AFTER successful submission
+      // The 'await fetch' inherently handles the necessary delay until the response is received.
       window.location.href = '/thank-you.html';
-    }, 0); // Redirect as soon as possible after current script
+
+    } catch (error) {
+      console.error('Error during order placement:', error);
+      alert('There was an error processing your order. Please try again.');
+      // You might want to redirect to an an error page or show a more user-friendly message here.
+    }
   });
 </script>
 
