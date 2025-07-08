@@ -205,7 +205,7 @@
   checkboxes.forEach(cb => cb.addEventListener('change', updateTotal));
 
   // Listen for the form submission
-  form.addEventListener('submit', async function(event) { // Make the function 'async'
+  form.addEventListener('submit', async function(event) {
     event.preventDefault(); // Prevent the default HTML form submission
 
     // 1. Client-side Validation
@@ -218,48 +218,52 @@
     // 2. Gather form data
     const coffeeItems = Array.from(checkboxes)
                             .filter(cb => cb.checked)
-                            .map(cb => cb.value); // e.g., ["Americano - Rs. 150", "Hot Coffee - Rs. 180"]
+                            .map(cb => cb.value);
     
     const phoneNumber = form.elements.phone.value;
     const address = form.elements.address.value;
-    const totalAmount = parseInt(hiddenTotal.value); // Ensure it's an integer
+    const totalAmount = parseInt(hiddenTotal.value);
 
-    // 3. Prepare the data payload for the Netlify Function
     const orderData = {
-      coffeeItems, // Array of selected coffee names/prices
+      coffeeItems,
       phoneNumber,
       address,
       totalAmount
     };
 
-    // 4. Send the data to your Netlify Function using fetch()
+    // 4. Send the data to your Netlify Function
     try {
       const response = await fetch('/.netlify/functions/place-order', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json', // Tell the server we're sending JSON
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify(orderData), // Convert your data object to a JSON string
+        body: JSON.stringify(orderData),
       });
 
-      // 5. Check if the function call was successful (HTTP status 2xx)
       if (!response.ok) {
-        const errorData = await response.json(); // Try to parse error message from function
+        const errorData = await response.json();
         throw new Error(errorData.message || 'Failed to place order via Netlify Function');
       }
 
-      // 6. Parse the success response from the function (optional, for logging)
       const result = await response.json();
       console.log('Order successfully sent to Supabase:', result);
 
-      // 7. Redirect to the thank-you page only AFTER successful submission
-      // The 'await fetch' inherently handles the necessary delay until the response is received.
+      // Redirect only after success
       window.location.href = '/thank-you.html';
 
     } catch (error) {
       console.error('Error during order placement:', error);
       alert('There was an error processing your order. Please try again.');
-      // You might want to redirect to an an error page or show a more user-friendly message here.
+    }
+  });
+</script>
+
+<script>
+  // Reload the page if it's accessed via the browser's back/forward cache
+  window.addEventListener("pageshow", function(event) {
+    if (event.persisted) {
+      window.location.reload();
     }
   });
 </script>
