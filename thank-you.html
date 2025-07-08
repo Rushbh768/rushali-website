@@ -57,6 +57,22 @@
       color: #9abf6e;
     }
 
+    .home-link {
+      display: inline-block;
+      margin-top: 30px;
+      font-size: 18px;
+      text-decoration: none;
+      background-color: #9abf6e;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+
+    .home-link:hover {
+      background-color: #7ca658;
+    }
+
     footer {
       margin-top: 50px;
       padding: 20px;
@@ -65,6 +81,17 @@
       font-size: 14px;
     }
   </style>
+
+  <script>
+    // Prevent form resubmission using back button
+    history.pushState(null, null, location.href);
+    window.onpopstate = function () {
+      history.go(1);
+    };
+
+    // Optional: clear session storage if any was used
+    sessionStorage.clear();
+  </script>
 </head>
 <body>
 
@@ -77,6 +104,8 @@
     <div class="thank-you-icon">☕</div>
     <h1>Thank You for Your Order!</h1>
     <p>Your coffee is being brewed with love and will be on its way to you shortly. We truly appreciate your support and hope you enjoy your drink!</p>
+
+    <a class="home-link" href="/">← Back to Home</a>
   </main>
 
   <footer>
